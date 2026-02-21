@@ -1,0 +1,8 @@
+{
+  "name": "AuraFlow: Autonomous On-Chain Wealth Engine",
+  "description": "AuraFlow is an AI-powered DeFi automation platform on Solana that deploys autonomous agents to optimize yield, manage risk, and execute complex trading strategies with consumer-grade simplicity.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
