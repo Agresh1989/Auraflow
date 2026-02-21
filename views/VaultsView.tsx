@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react';
 import { Strategy } from '../types';
+import CreateVaultModal from '../components/CreateVaultModal';
 
 const STAGED_VAULTS: Strategy[] = [
   {
@@ -51,6 +52,7 @@ const STAGED_VAULTS: Strategy[] = [
 
 const VaultsView: React.FC = () => {
   const [filter, setFilter] = useState('All');
+  const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
 
   const filteredVaults = filter === 'All' 
     ? STAGED_VAULTS 
@@ -63,7 +65,13 @@ const VaultsView: React.FC = () => {
           <h2 className="text-3xl font-bold mb-2">Strategy Vaults</h2>
           <p className="text-gray-400">Deploy capital into battle-tested, AI-managed on-chain strategies.</p>
         </div>
-        <div className="flex gap-2">
+        <div className="flex flex-wrap gap-2">
+          <button 
+            onClick={() => setIsCreateModalOpen(true)}
+            className="px-4 py-2 rounded-xl text-sm font-bold bg-white text-gray-900 hover:bg-purple-100 transition-all shadow-lg shadow-white/5 active:scale-95"
+          >
+            + Deploy Custom Agent
+          </button>
           {['All', 'Lending', 'Liquidity', 'Arbitrage'].map((cat) => (
             <button
               key={cat}
@@ -149,6 +157,11 @@ const VaultsView: React.FC = () => {
           </div>
         ))}
       </div>
+
+      <CreateVaultModal 
+        isOpen={isCreateModalOpen} 
+        onClose={() => setIsCreateModalOpen(false)} 
+      />
     </div>
   );
 };
